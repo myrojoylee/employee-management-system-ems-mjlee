@@ -1,6 +1,10 @@
 # EMS - Employee Management System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This work is an introduction to databases and management systems that have been created to handle data. A relational database is a type of database management system that stores data in tables with columns and points that are related to each other. This is the basis for modern database systems like MySQL which utilize the Structured Query Language (SQL) to perform CRUD operations. CRUD (Create, Read, Update, Delete) describes the four basic functions of the modern web application.
+
+This Employee Management System (EMS) uses Inquirer to allow the user to enter employee data as well as information about their salaries, departments, and roles within the company.
 
 ## Description
 
@@ -23,6 +27,17 @@ This is a WIP! Follow my progress below:
 - [ ] THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 - [ ] WHEN I choose to update an employee role
 - [ ] THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+
+## Installation
+
+- MySQL is required for this app to run, so follow directions outlined [here](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide) for a step-by-step guide depending on your operating system.
+- This is a [Node.js](https://nodejs.org/en) application. It is recommended to use at least v16 (up to v18) for this app to run correctly.
+- [Inquirer v8.2.4](https://www.npmjs.com/package/inquirer) is needed and can be installed via npm. Once in your project folder, type the following in your terminal: `npm i inquirer@8.2.4`.
+- [MySQL2](https://www.npmjs.com/package/mysql2) is needed to connect the app to the MySQL database. Once in your project folder, type the following in your terminal: `npm i mysql2`.
+
+## Usage
+
+- Navigate to `index.js`. Type in `node index` in the terminal once in the project directory and answer the prompts. The video below shows the full functionality of the app by showing the menus and different tables based on responses to each prompt.
 
 ## Sources/Credits
 
