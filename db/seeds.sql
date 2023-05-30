@@ -5,8 +5,8 @@ VALUES ("Human Resources"),
     ("IT"),
     ("Accounting");
 
--- INSERT INTO roles (title, salary, department_id)
--- VALUES ("Junior", "40000", 002);
+INSERT INTO roles (title, salary, department_id)
+VALUES ("Junior", "60000", 002), ("Intermediate", "80000", 002), ("Senior", "100000", 002);
 
--- INSERT INTO employees (first_name, last_name)
--- VALUES ("Jane", "Doe")
+INSERT INTO employees (first_name, last_name, role_id)
+VALUES ("Jane", "Doe", 001),("John", "Smith", 001)
