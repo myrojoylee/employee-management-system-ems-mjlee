@@ -3,7 +3,8 @@
 // ================================================= //
 const inquirer = require("inquirer");
 const db = require("./lib/db");
-const { table } = require("table");
+const createTable = require("./lib/createTable");
+
 // ================================================= //
 //               ---- QUESTION BANKS ----            //
 // ================================================= //
@@ -243,33 +244,6 @@ function addRole() {
 
 function addSalary() {}
 
-function createTable(rows, option) {
-  let array;
-  let columnHeadings = Object.keys(rows[0]);
-  switch (option) {
-    case "dept":
-      array = rows.map((val) => [val.id, val.name]);
-      break;
-    case "empl":
-      array = rows.map((val) => [
-        val.id,
-        val.first_name,
-        val.last_name,
-        val.role_id,
-        val.manager_id,
-      ]);
-    case "role":
-      array = rows.map((val) => [
-        val.id,
-        val.title,
-        val.salary,
-        val.department_id,
-      ]);
-      break;
-  }
-  array.unshift(columnHeadings);
-  console.log(table(array));
-}
 //Bonus
 
 // add employee managers
