@@ -3,6 +3,7 @@
 // ================================================= //
 const inquirer = require("inquirer");
 const db = require("./lib/db");
+const { table } = require("table");
 // ================================================= //
 //               ---- QUESTION BANKS ----            //
 // ================================================= //
@@ -121,7 +122,6 @@ function nextStep(main_menu_answer) {
   switch (main_menu_answer.main_menu) {
     case "View All Employees":
       viewAllEmployees();
-      console.log(reply);
       break;
     case "View All Roles":
       viewAllRoles();
@@ -158,7 +158,8 @@ function viewAllDepartments() {
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(rows);
+      let option = "dept";
+      createTable(rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
@@ -181,7 +182,8 @@ function viewAllEmployees() {
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(rows);
+      let option = "empl";
+      createTable(rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
@@ -220,9 +222,9 @@ function viewAllRoles() {
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(rows);
+      let option = "role";
+      createTable(rows, option);
     })
-    .catch(console.log)
     .then(() => db.end());
 }
 
@@ -241,6 +243,33 @@ function addRole() {
 
 function addSalary() {}
 
+function createTable(rows, option) {
+  let array;
+  let columnHeadings = Object.keys(rows[0]);
+  switch (option) {
+    case "dept":
+      array = rows.map((val) => [val.id, val.name]);
+      break;
+    case "empl":
+      array = rows.map((val) => [
+        val.id,
+        val.first_name,
+        val.last_name,
+        val.role_id,
+        val.manager_id,
+      ]);
+    case "role":
+      array = rows.map((val) => [
+        val.id,
+        val.title,
+        val.salary,
+        val.department_id,
+      ]);
+      break;
+  }
+  array.unshift(columnHeadings);
+  console.log(table(array));
+}
 //Bonus
 
 // add employee managers
