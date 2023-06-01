@@ -11,7 +11,7 @@ This Employee Management System (EMS) uses Inquirer to allow the user to enter e
 This is a WIP! Follow my progress below:
 
 - [ ] GIVEN a command-line application that accepts user input
-- [ ] WHEN I start the application
+- [x] WHEN I start the application
 - [x] THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
 - [x] WHEN I choose to view all departments
 - [x] THEN I am presented with a formatted table showing department names and department ids
