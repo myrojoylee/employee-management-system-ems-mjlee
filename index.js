@@ -160,7 +160,7 @@ function viewAllDepartments() {
     .query(queryStatement)
     .then(([rows]) => {
       let option = "dept";
-      createTable(rows, option);
+      createTable[0](rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
@@ -184,7 +184,7 @@ function viewAllEmployees() {
     .query(queryStatement)
     .then(([rows]) => {
       let option = "empl";
-      createTable(rows, option);
+      createTable[0](rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
@@ -224,7 +224,7 @@ function viewAllRoles() {
     .query(queryStatement)
     .then(([rows]) => {
       let option = "role";
-      createTable(rows, option);
+      createTable[0](rows, option);
     })
     .then(() => db.end());
 }

@@ -4,7 +4,7 @@ CREATE DATABASE ems_db;
 USE ems_db;
 
 CREATE TABLE departments (
-    id INT AUTO_INCREMENT NOT NULL, 
+    id INT NOT NULL, 
     name VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
     );
@@ -12,8 +12,8 @@ CREATE TABLE departments (
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(30),
-    salary DECIMAL,
     department_id INT NOT NULL,
+    salary DECIMAL,
     PRIMARY KEY (id),
     FOREIGN KEY (department_id)
         REFERENCES departments(id)
