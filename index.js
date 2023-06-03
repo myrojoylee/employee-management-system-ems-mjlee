@@ -119,7 +119,6 @@ function init() {
 init();
 
 function nextStep(main_menu_answer) {
-  let reply;
   switch (main_menu_answer.main_menu) {
     case "View All Employees":
       viewAllEmployees();
@@ -219,7 +218,7 @@ function updateEmployee() {
 }
 
 function viewAllRoles() {
-  let queryStatement = `SELECT * FROM roles`;
+  let queryStatement = `SELECT r.id, r.title, d.name AS department, r.salary FROM departments d JOIN roles r ON r.department_id = d.id`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
