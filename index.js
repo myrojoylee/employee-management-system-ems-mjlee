@@ -97,12 +97,6 @@ const addRolePrompt = [
     message: "Which department does this role belong to? ",
     choices: currentDeptList,
   },
-  {
-    type: "list",
-    name: "manager",
-    message: "Who is the employee's manager? ",
-    choices: ["Engineering", "Finance", "Legal", "Sales"],
-  },
 ];
 
 const updateEmployeePrompt = [
@@ -176,15 +170,14 @@ function viewAllDepartments() {
 }
 
 function addDepartment(new_department_answer) {
-  currentDeptList.push(new_department_answer.department_name);
   let queryStatement = `INSERT INTO departments (name) VALUES ('${new_department_answer.department_name}')`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
+      currentDeptList.push(new_department_answer.department_name);
       console.log(
         `Added ${new_department_answer.department_name} to the database.`
       );
-      init();
     })
     .catch(console.log)
     .then(() => init());
@@ -261,15 +254,17 @@ function viewAllRoles() {
 //fix
 function addRole(new_role_answers) {
   currentRoleList.push(new_role_answers.new_role);
-  let queryStatement = `INSERT INTO role (title, salary, department_id ) VALUES ('${new_department_answer.department_name}')`;
+  let department_id =
+    currentDeptList.findIndex((dept) => dept === new_role_answers.department) +
+    1;
+  let queryStatement = `INSERT INTO roles (title, department_id, salary) VALUES ('${new_role_answers.new_role}', ${department_id}, ${new_role_answers.salary})`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(`Departments have been updated`);
-      init();
+      console.log(`Added ${new_role_answers.new_role} to the database.`);
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 }
 
 function addSalary() {}
