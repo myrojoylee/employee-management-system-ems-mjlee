@@ -20,6 +20,7 @@ let currentRoleList = [
   "Legal Team Associate",
 ];
 let currentEmpList = [
+  "None",
   "Buzz Lightyear",
   "Mickey Mouse",
   "Queen Of Hearts",
@@ -75,7 +76,7 @@ const addEmployeePrompt = [
     type: "list",
     name: "manager",
     message: "Who is the employee's manager? ",
-    choices: currentDeptList,
+    choices: currentEmpList,
   },
 ];
 
@@ -204,17 +205,29 @@ function viewAllEmployees() {
     .then(() => init());
 }
 
-function addEmployee() {
-  let queryStatement = `INSERT INTO employee (first_name, last_name, role_id ) VALUES ('${new_department_answer.department_name}')`;
+function addEmployee(new_employee_answers) {
+  let role_id =
+    currentRoleList.findIndex(
+      (role) => role === new_employee_answers.employee_role
+    ) + 1;
+
+  let manager_id;
+  new_employee_answers.manager != "None"
+    ? (manager_id = currentEmpList.findIndex(
+        (emp) => emp === new_employee_answers.manager
+      ))
+    : (manager_id = "null");
+
+  let queryStatement = `INSERT INTO employees (first_name, last_name, role_id, manager_id ) VALUES ('${new_employee_answers.first_name}', '${new_employee_answers.last_name}', ${role_id}, ${manager_id})`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(`Departments have been updated`);
+      console.log(
+        `Added ${new_employee_answers.first_name} ${new_employee_answers.last_name} to the database`
+      );
     })
     .catch(console.log)
     .then(() => init());
-
-  console.log(`Added first name last name to the database`);
 }
 // fix
 function updateEmployee() {
