@@ -215,26 +215,29 @@ function addEmployee(new_employee_answers) {
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(
-        `Added ${new_employee_answers.first_name} ${new_employee_answers.last_name} to the database`
-      );
+      let fullName = `${new_employee_answers.first_name} ${new_employee_answers.last_name}`;
+      currentEmpList.push(fullName);
+      console.log(`Added ${fullName} to the database`);
     })
     .catch(console.log)
     .then(() => init());
 }
 // fix
-function updateEmployee() {
-  let queryStatement = `UPDATE employee (first_name, last_name, role_id ) VALUES ('${new_department_answer.department_name}')`;
+function updateEmployee(update_employee_answers) {
+  let role_id =
+    currentRoleList.findIndex(
+      (emp) => emp === update_employee_answers.update_role
+    ) + 1;
+  let first_name = update_employee_answers.update_employee.split(" ")[0];
+  let last_name = update_employee_answers.update_employee.split(" ")[1];
+  let queryStatement = `UPDATE employees SET first_name = "${first_name}", last_name = "${last_name}", role_id = ${role_id} WHERE first_name = "${first_name}"`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(`Departments have been updated`);
-      init();
+      console.log(`Updated ${update_employee_answers.update_employee}'s role`);
     })
     .catch(console.log)
     .then(() => init());
-
-  console.log(`Updated employee's role`);
 }
 
 /**
