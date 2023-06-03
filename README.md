@@ -10,7 +10,7 @@ This Employee Management System (EMS) uses Inquirer to allow the user to enter e
 
 This is a WIP! Follow my progress below:
 
-- [ ] GIVEN a command-line application that accepts user input
+- [x] GIVEN a command-line application that accepts user input
 - [x] WHEN I start the application
 - [x] THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
 - [x] WHEN I choose to view all departments
@@ -25,8 +25,16 @@ This is a WIP! Follow my progress below:
 - [x] THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
 - [x] WHEN I choose to add an employee
 - [x] THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-- [ ] WHEN I choose to update an employee role
-- [ ] THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+- [x] WHEN I choose to update an employee role
+- [x] THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+
+Bonus/extras:
+
+- [ ] Can update employee managers
+- [ ] Can view employees by manager
+- [ ] Can view employees by department
+- [ ] Can delete departments, roles, and employees
+- [ ] Can view the combined salaries of all employees by department.
 
 ## Installation
 
