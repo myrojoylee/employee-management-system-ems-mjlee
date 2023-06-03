@@ -33,7 +33,7 @@ const main_menu = [
   {
     type: "list",
     name: "main_menu",
-    message: "What would you like to do? ",
+    message: "What would you like to do? (CTRL + C to quit)",
     choices: [
       "View All Employees",
       "Add Employee",
@@ -171,7 +171,7 @@ function viewAllDepartments() {
       createTable(rows, option);
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 }
 
 function addDepartment(new_department_answer) {
@@ -184,10 +184,9 @@ function addDepartment(new_department_answer) {
         `Added ${new_department_answer.department_name} to the database.`
       );
       init();
-      return rows;
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 }
 
 /**
@@ -202,7 +201,7 @@ function viewAllEmployees() {
       createTable(rows, option);
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 }
 
 function addEmployee() {
@@ -211,10 +210,9 @@ function addEmployee() {
     .query(queryStatement)
     .then(([rows]) => {
       console.log(`Departments have been updated`);
-      return rows;
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 
   console.log(`Added first name last name to the database`);
 }
@@ -225,10 +223,10 @@ function updateEmployee() {
     .query(queryStatement)
     .then(([rows]) => {
       console.log(`Departments have been updated`);
-      return rows;
+      init();
     })
     .catch(console.log)
-    .then(() => db.end());
+    .then(() => init());
 
   console.log(`Updated employee's role`);
 }
@@ -244,7 +242,7 @@ function viewAllRoles() {
       let option = "role";
       createTable(rows, option);
     })
-    .then(() => db.end());
+    .then(() => init());
 }
 
 //fix
@@ -255,7 +253,7 @@ function addRole(new_role_answers) {
     .query(queryStatement)
     .then(([rows]) => {
       console.log(`Departments have been updated`);
-      return rows;
+      init();
     })
     .catch(console.log)
     .then(() => db.end());
