@@ -8,6 +8,27 @@ const createTable = require("./lib/createTable");
 // ================================================= //
 //               ---- QUESTION BANKS ----            //
 // ================================================= //
+let currentDeptList = ["Engineering", "Finance", "Legal", "Sales"];
+let currentRoleList = [
+  "Sales Lead",
+  "Salesperson",
+  "Lead Engineer",
+  "Software Engineer",
+  "Account Manager",
+  "Accountant",
+  "Legal Team Lead",
+  "Legal Team Associate",
+];
+let currentEmpList = [
+  "Buzz Lightyear",
+  "Mickey Mouse",
+  "Queen Of Hearts",
+  "Minnie Mouse",
+  "Pluto Planet",
+  "Snow White",
+  "Cruella de Vil",
+  "Randall Boggs",
+];
 const main_menu = [
   {
     type: "list",
@@ -47,16 +68,14 @@ const addEmployeePrompt = [
   {
     type: "list",
     name: "employee_role",
-    choices: [
-      "Sales Lead",
-      "Salesperson",
-      "Lead Engineer",
-      "Software Engineer",
-      "Account Manager",
-      "Accountant",
-      "Legal Team Lead",
-      "Legal Team Associate",
-    ],
+    message: "What is this employee's role? ",
+    choices: currentRoleList,
+  },
+  {
+    type: "list",
+    name: "manager",
+    message: "Who is the employee's manager? ",
+    choices: currentDeptList,
   },
 ];
 
@@ -69,14 +88,13 @@ const addRolePrompt = [
   {
     type: "input",
     name: "salary",
-    message:
-      "What is the salary for this role? (DO NOT insert commas or any currency symbols) ",
+    message: "What is the salary for this role? (example: 100000) ",
   },
   {
     type: "list",
     name: "department",
     message: "Which department does this role belong to? ",
-    choices: ["Engineering", "Finance", "Legal", "Sales"],
+    choices: currentDeptList,
   },
   {
     type: "list",
@@ -91,22 +109,13 @@ const updateEmployeePrompt = [
     type: "list",
     name: "update_employee",
     message: "Choose the employee below you would like to update: ",
-    choices: ["Jane Doe", "John Doe", "John Smith"],
+    choices: currentEmpList,
   },
   {
     type: "list",
     name: "update_role",
     message: "Which role do you want to assign to the selected employee? ",
-    choices: [
-      "Sales Lead",
-      "Salesperson",
-      "Lead Engineer",
-      "Software Engineer",
-      "Account Manager",
-      "Accountant",
-      "Legal Team Lead",
-      "Legal Team Associate",
-    ],
+    choices: currentRoleList,
   },
 ];
 
@@ -159,31 +168,38 @@ function viewAllDepartments() {
     .query(queryStatement)
     .then(([rows]) => {
       let option = "dept";
-      createTable[0](rows, option);
+      createTable(rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
 }
 
 function addDepartment(new_department_answer) {
+  currentDeptList.push(new_department_answer.department_name);
   let queryStatement = `INSERT INTO departments (name) VALUES ('${new_department_answer.department_name}')`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
-      console.log(`Departments have been updated`);
+      console.log(
+        `Added ${new_department_answer.department_name} to the database.`
+      );
+      init();
       return rows;
     })
     .catch(console.log)
     .then(() => db.end());
 }
 
+/**
+ * JOIN between dept, role, and employee tables
+ */
 function viewAllEmployees() {
   let queryStatement = `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager FROM employees e LEFT JOIN employees m ON m.id = e.manager_id JOIN roles r ON e.role_id = r.id JOIN departments d ON d.id = r.department_id`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
       let option = "empl";
-      createTable[0](rows, option);
+      createTable(rows, option);
     })
     .catch(console.log)
     .then(() => db.end());
@@ -217,20 +233,24 @@ function updateEmployee() {
   console.log(`Updated employee's role`);
 }
 
+/**
+ * JOIN between dept and role tables
+ */
 function viewAllRoles() {
   let queryStatement = `SELECT r.id, r.title, d.name AS department, r.salary FROM departments d JOIN roles r ON r.department_id = d.id`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {
       let option = "role";
-      createTable[0](rows, option);
+      createTable(rows, option);
     })
     .then(() => db.end());
 }
 
 //fix
-function addRole() {
-  let queryStatement = `INSERT INTO role (title, salary, deptartment_id ) VALUES ('${new_department_answer.department_name}')`;
+function addRole(new_role_answers) {
+  currentRoleList.push(new_role_answers.new_role);
+  let queryStatement = `INSERT INTO role (title, salary, department_id ) VALUES ('${new_department_answer.department_name}')`;
   db.promise()
     .query(queryStatement)
     .then(([rows]) => {

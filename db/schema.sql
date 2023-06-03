@@ -4,7 +4,7 @@ CREATE DATABASE ems_db;
 USE ems_db;
 
 CREATE TABLE departments (
-    id INT NOT NULL, 
+    id INT NOT NULL AUTO_INCREMENT, 
     name VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
     );
