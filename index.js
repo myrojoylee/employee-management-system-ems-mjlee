@@ -34,7 +34,7 @@ const main_menu = [
   {
     type: "list",
     name: "main_menu",
-    message: "What would you like to do? (CTRL + C to quit)",
+    message: "What would you like to do? (Scroll and choose 'EXIT' to exit)",
     choices: [
       "View All Employees",
       "Add Employee",
@@ -43,6 +43,13 @@ const main_menu = [
       "Add Role",
       "View All Departments",
       "Add Department",
+      "Update Employee Managers",
+      "View Employees by Manager",
+      "View Employees by Department",
+      "Delete Department",
+      "Delete Role",
+      "Delete Employee",
+      "EXIT",
     ],
   },
 ];
@@ -114,6 +121,46 @@ const updateEmployeePrompt = [
   },
 ];
 
+const updateEmpMgrPrompt = [
+  {
+    type: "list",
+    name: "update_emp_mgr",
+    message: "Choose the employee below you would like to update: ",
+    choices: currentEmpList,
+  },
+  {
+    type: "list",
+    name: "update_role",
+    message: "Which role do you want to assign to the selected employee? ",
+    choices: currentRoleList,
+  },
+];
+
+const deleteDepartmentPrompt = [
+  {
+    type: "list",
+    name: "delete_department",
+    message: "Which department did you want to delete?",
+    choices: currentDeptList,
+  },
+];
+const deleteRolePrompt = [
+  {
+    type: "list",
+    name: "delete_role",
+    message: "Which role did you want to delete?",
+    choices: currentRoleList,
+  },
+];
+const deleteEmployeePrompt = [
+  {
+    type: "list",
+    name: "delete_role",
+    message: "Which role did you want to delete?",
+    choices: currentEmpList,
+  },
+];
+
 function init() {
   inquirer
     .prompt(main_menu)
@@ -154,6 +201,36 @@ function nextStep(main_menu_answer) {
         .then((update_employee_answers) =>
           updateEmployee(update_employee_answers)
         );
+      break;
+    case "Update Employee Managers":
+      inquirer
+        .prompt(deleteDepartmentPrompt)
+        .then((delete_dept_answers) => addRole(delete_dept_answers));
+      break;
+    case "View Employees by Manager":
+      inquirer;
+      viewEmployeesByManager();
+      break;
+    case "View Employees by Department":
+      viewEmployeesByDept();
+      break;
+    case "Delete Department":
+      inquirer
+        .prompt(deleteDepartmentPrompt)
+        .then((delete_dept_answers) => deleteDept(delete_dept_answers));
+      break;
+    case "Delete Role":
+      inquirer
+        .prompt(deleteRolePrompt)
+        .then((delete_role_answers) => deleteRole(delete_role_answers));
+      break;
+    case "Delete Employee":
+      inquirer
+        .prompt(deleteEmployeePrompt)
+        .then((delete_emp_answers) => deleteEmployee(delete_emp_answers));
+      break;
+    case "EXIT":
+      process.exit();
   }
 }
 
@@ -222,7 +299,7 @@ function addEmployee(new_employee_answers) {
     .catch(console.log)
     .then(() => init());
 }
-// fix
+
 function updateEmployee(update_employee_answers) {
   let role_id =
     currentRoleList.findIndex(
@@ -270,16 +347,28 @@ function addRole(new_role_answers) {
     .then(() => init());
 }
 
-function addSalary() {}
+// =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=
+// bonus material
 
-//Bonus
+function updateEmployeeManager() {}
 
-// add employee managers
+function viewEmployeesByManager() {
+  console.log(`insert query to view employees by manager`);
+  process.exit();
+}
 
-// view employees by manager
+function viewEmployeesByDept() {
+  console.log(`insert query to view employees by dept`);
+}
 
-// view employees by department
+function deleteDept() {
+  console.log(delete_dept_answers);
+}
 
-// functionality to delete depts, roles, and employees
+function deleteRole() {
+  console.log(delete_role_answers);
+}
 
-// functionality to view total utilized budget of dept - combined salaries of employees in dept
+function deleteEmployee() {
+  console.log(delete_emp_answers);
+}
