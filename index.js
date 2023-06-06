@@ -155,8 +155,8 @@ const deleteRolePrompt = [
 const deleteEmployeePrompt = [
   {
     type: "list",
-    name: "delete_role",
-    message: "Which role did you want to delete?",
+    name: "delete_emp",
+    message: "Which employee did you want to delete?",
     choices: currentEmpList,
   },
 ];
@@ -204,8 +204,8 @@ function nextStep(main_menu_answer) {
       break;
     case "Update Employee Managers":
       inquirer
-        .prompt(deleteDepartmentPrompt)
-        .then((delete_dept_answers) => addRole(delete_dept_answers));
+        .prompt(updateEmpMgrPrompt)
+        .then((update_emg_mgr_answers) => addRole(update_emg_mgr_answers));
       break;
     case "View Employees by Manager":
       inquirer;
@@ -350,7 +350,10 @@ function addRole(new_role_answers) {
 // =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=
 // bonus material
 
-function updateEmployeeManager() {}
+function updateEmployeeManager(update_emg_mgr_answers) {
+  console.log(update_emg_mgr_answers);
+  process.exit();
+}
 
 function viewEmployeesByManager() {
   console.log(`insert query to view employees by manager`);
@@ -359,16 +362,20 @@ function viewEmployeesByManager() {
 
 function viewEmployeesByDept() {
   console.log(`insert query to view employees by dept`);
+  process.exit();
 }
 
-function deleteDept() {
+function deleteDept(delete_dept_answers) {
   console.log(delete_dept_answers);
+  process.exit();
 }
 
-function deleteRole() {
+function deleteRole(delete_role_answers) {
   console.log(delete_role_answers);
+  process.exit();
 }
 
-function deleteEmployee() {
+function deleteEmployee(delete_emp_answers) {
   console.log(delete_emp_answers);
+  process.exit();
 }

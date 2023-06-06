@@ -1,8 +1,8 @@
-<h1 style="text-align: center; font-family: 'Bebas Neue'; "> EMS - Employee Management System </h1>
+# EMS - Employee Management System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<h2 style="font-family: 'Bebas Neue'; "> Description: </h2>
+## Description:
 
 This work is an introduction to databases and management systems that have been created to handle data. A relational database is a type of database management system that stores data in tables with columns and points that are related to each other. This is the basis for modern database systems like MySQL which utilize the Structured Query Language (SQL) to perform CRUD operations. CRUD (Create, Read, Update, Delete) describes the four basic functions of the modern web application.
 
@@ -36,23 +36,23 @@ Bonus/extras:
 - [ ] Can delete departments, roles, and employees
 - [ ] Can view the combined salaries of all employees by department.
 
-<h2 style="font-family: 'Bebas Neue'; "> Installation: </h2>
+## Installation:
 
 - MySQL is required for this app to run, so follow directions outlined [here](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide) for a step-by-step guide depending on your operating system.
 - This is a [Node.js](https://nodejs.org/en) application. It is recommended to use at least v16 (up to v18) for this app to run correctly.
 - [Inquirer v8.2.4](https://www.npmjs.com/package/inquirer) is needed and can be installed via npm. Once in your project folder, type the following in your terminal: `npm i inquirer@8.2.4`.
 - [MySQL2](https://www.npmjs.com/package/mysql2) is needed to connect the app to the MySQL database. Once in your project folder, type the following in your terminal: `npm i mysql2`.
 
-<h2 style="font-family: 'Bebas Neue'; "> Usage: </h2>
+## Usage:
 
 - Navigate to `index.js`. Type in `node index` in the terminal once in the project directory and answer the prompts. The video below shows the full functionality of the app by showing the menus and different tables based on responses to each prompt.
 
-<h2 style="font-family: 'Bebas Neue'; "> Sources/Credits: </h2>
+## Sources/Credits:
 
 - Information about relational databases was sourced from [Oracle](https://www.oracle.com/database/what-is-a-relational-database/#:~:text=A%20relational%20database%20is%20a,of%20representing%20data%20in%20tables.).
 
 - More information about MySQL can be found in the docs [here](https://dev.mysql.com/doc/).
 
-<h2 style="font-family: 'Bebas Neue'; "> License: </h2>
+## License:
 
 - Refer to the license in the repository.
