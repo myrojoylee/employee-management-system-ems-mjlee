@@ -5,13 +5,13 @@ USE ems_db;
 
 CREATE TABLE departments (
     id INT NOT NULL AUTO_INCREMENT, 
-    name VARCHAR(30) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
     );
 
 CREATE TABLE roles (
     id INT AUTO_INCREMENT NOT NULL,
-    title VARCHAR(30),
+    title VARCHAR(50),
     department_id INT NOT NULL,
     salary DECIMAL,
     PRIMARY KEY (id),
