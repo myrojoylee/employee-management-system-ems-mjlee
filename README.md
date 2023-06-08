@@ -28,6 +28,10 @@ Please type the following in the terminal of your project folder in order to run
 
 - Navigate to `index.js`. Type in `node index` in the terminal once in the project directory and answer the prompts. The video below shows the full functionality of the app by showing the menus and different tables based on responses to each prompt.
 
+
+https://github.com/myrojoylee/employee-management-system-ems-mjlee/assets/120980593/367d031f-2351-482b-ad6f-7058b9a5a279
+
+
 ## Sources/Credits:
 
 - Information about relational databases was sourced from [Oracle](https://www.oracle.com/database/what-is-a-relational-database/#:~:text=A%20relational%20database%20is%20a,of%20representing%20data%20in%20tables.).
