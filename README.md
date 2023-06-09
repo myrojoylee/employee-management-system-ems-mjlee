@@ -28,7 +28,9 @@ Please type the following in the terminal of your project folder in order to run
 
 - Navigate to `index.js`. Type in `node index` in the terminal once in the project directory and answer the prompts. The video below shows the full functionality of the app by showing the menus and different tables based on responses to each prompt. Find the video [here](https://drive.google.com/file/d/1msmCTMjxuWFmIr7T_WULStI8PzuOV_dM/view?usp=sharing) if the video does not play.
 
-https://github.com/myrojoylee/employee-management-system-ems-mjlee/assets/120980593/1a34c3ae-3c27-434d-a7bb-2f2e6cb317cd
+
+https://github.com/myrojoylee/employee-management-system-ems-mjlee/assets/120980593/657acfb7-ea59-4701-b3ed-c46a74e37789
+
 
 ## Sources/Credits:
 
