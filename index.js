@@ -74,19 +74,19 @@ async function nextStep(main_menu_answer) {
       await dept.getTable();
       break;
     case "Add Department":
-      addDepartment(dept);
+      await addDepartment(dept);
       break;
     case "Add Employee":
-      addEmployee(employee, roleList, empList);
+      await addEmployee(employee, roleList, empList);
       break;
     case "Add Role":
-      addRole(employee, role, deptList);
+      await addRole(role, deptList);
       break;
     case "Update Employee Role":
-      updateEmployeeRole(employee, empList, roleList);
+      await updateEmployeeRole(employee, empList, roleList);
       break;
     case "Update Employee Managers":
-      updateEmployeeManagers(employee, empList);
+      await updateEmployeeManagers(employee, empList);
       break;
     case "View Employees by Manager":
       await employee.viewEmployeesByManager();
@@ -95,13 +95,13 @@ async function nextStep(main_menu_answer) {
       await employee.viewEmployeesByDept();
       break;
     case "Delete Department":
-      deleteDepartment(dept, deptList);
+      await deleteDepartment(dept, deptList);
       break;
     case "Delete Role":
-      deleteRole(role, roleList);
+      await deleteRole(role, roleList);
       break;
     case "Delete Employee":
-      deleteEmployee(employee, empList);
+      await deleteEmployee(employee, empList);
       break;
     case "View Utilized Budget by Department":
       await dept.getUtilizedBudget();
